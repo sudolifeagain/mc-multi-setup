@@ -26,8 +26,7 @@ if %ERRORLEVEL% == 0 (
     echo.
     winget install --id Cloudflare.cloudflared --accept-package-agreements --accept-source-agreements
     
-    REM Re-check if installation was successful
-    where cloudflared.exe > nul 2>&1
+    REM Check winget exit code
     if not %ERRORLEVEL% == 0 (
         echo.
         echo  !!! INSTALLATION FAILED. !!!
@@ -39,6 +38,7 @@ if %ERRORLEVEL% == 0 (
     )
     echo.
     echo  [OK] Installation complete.
+    echo  [NOTE] Please restart your terminal or command prompt to use cloudflared.
 )
 
 echo.
