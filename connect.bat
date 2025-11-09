@@ -1,14 +1,16 @@
 @echo off
-echo ============================================
-echo  サーバー (mc.re4lity.com) へ接続します
-echo ============================================
-echo 
-echo  接続を開始します...
-echo  (このウィンドウは、ゲーム中ずっと開いたままにしてください)
-echo  (終了するときは Ctrl+C を押すか、ウィンドウを閉じてください)
-echo 
+chcp 437 > nul
 
-cloudflared access tcp --hostname mc.re4lity.com --url localhost:20100
+echo ============================================
+echo  Connecting to server (mc.re4lity.com)
+echo ============================================
+echo.
+echo  Starting connection...
+echo  (Keep this window open while playing)
+echo  (Press Ctrl+C or close this window to disconnect)
+echo.
 
-echo 接続が終了しました。
+cloudflared access tcp --hostname mc.re4lity.com --url localhost:201l00
+
+echo Connection closed.
 pause
