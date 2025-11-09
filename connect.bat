@@ -10,7 +10,7 @@ echo  (Keep this window open while playing)
 echo  (Press Ctrl+C or close this window to disconnect)
 echo.
 
-cloudflared access tcp --hostname mc.re4lity.com --url localhost:201l00
+cloudflared access tcp --hostname mc.re4lity.com --url localhost:20100
 
 echo Connection closed.
 pause
