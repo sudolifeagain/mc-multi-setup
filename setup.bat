@@ -2,20 +2,20 @@
 chcp 437 > nul
 
 echo ============================================
-echo  Cloudflared Setup (v3)
+echo  Cloudflared Setup (Powerd by re4lity)
 echo ============================================
 echo.
 echo  [IMPORTANT]
 echo  This script must be run as an Administrator.
-echo  If you did not Right-Click > "Run as administrator",
-echo  please close this and try again.
 echo.
-pause
+echo Press any key to continue...
+pause > nul
 
 echo.
 echo ---> Checking if cloudflared is installed...
 echo.
 
+REM Check path for cloudflared.exe
 where cloudflared.exe > nul 2>&1
 
 if %ERRORLEVEL% == 0 (
@@ -26,13 +26,15 @@ if %ERRORLEVEL% == 0 (
     echo.
     winget install --id Cloudflare.cloudflared --accept-package-agreements --accept-source-agreements
     
+    REM Re-check if installation was successful
     where cloudflared.exe > nul 2>&1
     if not %ERRORLEVEL% == 0 (
         echo.
         echo  !!! INSTALLATION FAILED. !!!
         echo  !!! Please check if Winget is available. !!!
         echo.
-        pause
+        echo Press any key to exit...
+        pause > nul
         exit /b
     )
     echo.
@@ -41,19 +43,10 @@ if %ERRORLEVEL% == 0 (
 
 echo.
 echo ============================================
-echo  Cloudflare Authentication
-echo ============================================
-echo.
-echo ---> Starting browser authentication...
-echo      Please complete the login in your browser.
-echo      (If already logged in, it will say "already logged in")
-echo.
-cloudflared access login
-
-echo.
-echo ============================================
 echo  Setup Complete
 echo ============================================
+echo  Installation check is finished.
 echo  You can close this window.
-echo  Please use "connect.bat" from now on.
-pause
+echo  Please use "connect.bat" to play.
+echo Press any key to exit...
+pause > nul
