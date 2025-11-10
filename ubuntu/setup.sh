@@ -22,18 +22,42 @@ if command -v cloudflared >/dev/null 2>&1; then
     echo " [OK] cloudflared is already installed. Skipping."
 else
     echo " [!] cloudflared not found."
-    echo "     Installing via apt..."
+    echo "     Installing cloudflared..."
     echo
     if command -v sudo >/dev/null 2>&1; then
-        sudo apt update
-        sudo apt install -y cloudflared || {
+        # Detect architecture
+        ARCH=$(uname -m)
+        if [ "$ARCH" = "x86_64" ]; then
+            CLOUDFLARED_URL="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb"
+        elif [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
+            CLOUDFLARED_URL="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb"
+        elif [[ "$ARCH" == arm* ]]; then
+            CLOUDFLARED_URL="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb"
+        else
+            echo " !!! Unsupported architecture: $ARCH !!!"
+            read -p "Press Enter to exit..."
+            exit 1
+        fi
+
+        echo "     Downloading cloudflared .deb package for $ARCH..."
+        curl -L --output cloudflared.deb "$CLOUDFLARED_URL" || {
             echo
-            echo " !!! INSTALLATION FAILED. !!!"
-            echo " !!! Please check your package manager or install manually. !!!"
+            echo " !!! DOWNLOAD FAILED. !!!"
+            echo " !!! Please check your internet connection. !!!"
             echo
             read -p "Press Enter to exit..."
             exit 1
         }
+
+        echo "     Installing package..."
+        sudo dpkg -i cloudflared.deb || {
+            echo
+            echo " !!! INSTALLATION FAILED. !!!"
+            echo " !!! Attempting to fix dependencies... !!!"
+            sudo apt-get install -f -y
+        }
+
+        rm -f cloudflared.deb
     else
         echo "sudo not found. Please install cloudflared manually."
         read -p "Press Enter to exit..."
