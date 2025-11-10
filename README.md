@@ -4,7 +4,7 @@
 
 このリポジトリでは、Minecraft(Java版のみ対応)のマルチプレイに参加するためのスクリプトを管理しています。（re4lityの友人向け）
 
-## 参加方法
+## 参加方法(for Windows)
 
 0. **認証情報の設定**
 
@@ -57,3 +57,8 @@
 **注意:**
 - `setup.bat` は最初の1回だけ実行すればOKです。
 - cloudflared のインストールや実行にはインターネット接続が必要です。
+
+## For Ubuntu
+
+read codes, and think!
+its not that hard, you can do it :p
