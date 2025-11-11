@@ -53,12 +53,10 @@
 
 6. **認証方法**
 
-<<<<<<< HEAD
    接続を開始すると、ブラウザが立ち上がります。<br>
    0.で登録したGoogleアカウントでサインインしてください。<br>
    サインインが成功すると、このような画面が表示されるので、Approveを選択してください。<br>
    「Congraturation!」の画面が表示されたら認証は完了です。<br>
-=======
    接続を開始すると、ブラウザが立ち上がります。
    0.で登録したGoogleアカウントでサインインしてください。
    サインインが成功すると、このような画面が表示されるので、Approveを選択してください。
@@ -66,7 +64,6 @@
    ![Cloudflare Access認証画面の例](https://github.com/sudolifeagain/mc-multi-setup/blob/main/photo.png)
 
    「Congraturation!」の画面が表示されたら認証は完了です。
->>>>>>> f7aa5a23ff599e96f4a854f284009e50018cf1a3
 
 7. **終了方法**
 
