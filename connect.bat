@@ -8,7 +8,7 @@ echo.
 
 REM Check if Cloudflare Access session is valid
 echo Checking Cloudflare Access session...
-cloudflared access login mc.re4lity.com
+cloudflared access login https://mc.re4lity.com
 if errorlevel 1 (
     echo.
     echo [ERROR] Failed to authenticate with Cloudflare Access
